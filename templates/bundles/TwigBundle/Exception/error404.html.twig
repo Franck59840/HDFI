@@ -1,0 +1,20 @@
+{% extends 'bundles/TwigBundle/Exception/index.html.twig' %}
+
+{% block title %}
+	{{ parent() }} - Page not found
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="error-template">
+                    <h1>
+                        Ops!</h1>
+                    <h2>
+                        404 Not Found</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
