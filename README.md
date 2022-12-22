@@ -86,8 +86,7 @@ Here's an example of the response you might receive:
   "vote_count": 10327
 }
 
-
-Explain how to use your project once it's installed. Include examples of requests and responses if applicable.
+ ```
 
 ## Contributing
 
