@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block body %}
-{# <a href="details/{{detailsDataMovies.id}}"> #}
-<div class="grid grid-cols-6 gap-6 px-5 items-list">
+<div class="grid grid-cols-6 gap-6 px-5 items-list md:max-xl:flex">
     
   {% for  movie in data.results %}
       <div class="bg-white mt-8 ml-4 rounded-md bg-gray-800 shadow-lg">
@@ -24,7 +23,9 @@
             <p class="flex text-md px-2 ">Rating : {{movie.vote_average}}</p>
             
             <div class="text-xs flex justify-center mt-2">
+          <a href="/details/{{movie.id}}"> 
               <button type="button" class="border border-gray-400 text-gray-400 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-white focus:outline-none focus:shadow-outline">More</button>
+      </a> 
               
             </div>
           </div>
@@ -33,5 +34,4 @@
     {% endfor %}
     
     </div>
-  {# </a> #}
 {% endblock %}

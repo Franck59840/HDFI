@@ -21,6 +21,16 @@ class CallApiService
                 return $response->toArray();
             }
     }
+    public function callApiDetailsMovies(): array
+    {
+        $response = $this->client->request(
+            'GET',
+            'https://api.themoviedb.org/3/movie/{id}?api_key='.$this->apiKey.'&language=en-US');
+        
+            if ($response->getStatusCode() === 200) {
+                return $response->toArray();
+            }
+    }
 
     public function callApiSeries(): array
     {
