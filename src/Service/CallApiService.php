@@ -16,8 +16,10 @@ class CallApiService
         $response = $this->client->request(
             'GET',
             'https://api.themoviedb.org/3/movie/popular?api_key='.$this->apiKey.'&language=en-EN&page=1');
-
-        return $response->toArray();
+        
+            if ($response->getStatusCode() === 200) {
+                return $response->toArray();
+            }
     }
 
     public function callApiSeries(): array
@@ -25,7 +27,21 @@ class CallApiService
         $response = $this->client->request(
             'GET',
             'https://api.themoviedb.org/3/tv/popular?api_key='.$this->apiKey.'&language=en-US&page=1');
-        return $response->toArray();
+            
+            if ($response->getStatusCode() === 200) {
+                return $response->toArray();
+            }
+    }
+
+    public function callApiLatestMovies(): array
+    {
+        $response = $this->client->request(
+            'GET',
+            'https://api.themoviedb.org/3/movie/top_rated?api_key='.$this->apiKey.'&language=en-US&page=1');
+
+            if ($response->getStatusCode() === 200) {
+                return $response->toArray();
+            }
     }
 }
 
