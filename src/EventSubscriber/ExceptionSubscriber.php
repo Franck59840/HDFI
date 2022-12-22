@@ -3,7 +3,7 @@
 namespace App\EventSubscriber;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-
+use Symfony\Component\HttpFoundation\Response;
 class ExceptionSubscriber implements EventSubscriberInterface
 {
 
@@ -13,11 +13,16 @@ class ExceptionSubscriber implements EventSubscriberInterface
             ExceptionEvent::class => 'onException',
         ];
     }
-
-    public static function testApi ()
-    {
-        return [
-            'kernel.exception' => 'onResponse',
-        ];
-    }
-}
+    
+    public function onException(ExceptionEvent $event)
+        {
+            $exception = $event->getThrowable();
+            $response = new Response();
+            $response->setContent(json_encode([
+                'error' => $exception->getMessage(),
+            ]));
+            $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
+            $response->headers->set('Content-Type', 'application/json');
+            $event->setResponse($response);
+        }
+ }
