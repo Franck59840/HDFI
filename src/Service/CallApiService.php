@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use Symfony\Contracts\HttpClient\HttpClientInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class CallApiService 
 {
@@ -21,11 +22,12 @@ class CallApiService
                 return $response->toArray();
             }
     }
-    public function callApiDetailsMovies(): array
+    public function callApiDetailsMovies(Request $resquest): array
     {
+        $id = $resquest->get('id');
         $response = $this->client->request(
             'GET',
-            'https://api.themoviedb.org/3/movie/{id}?api_key='.$this->apiKey.'&language=en-US');
+            'https://api.themoviedb.org/3/movie/' . $id . '?api_key='.$this->apiKey.'&language=en-US');
         
             if ($response->getStatusCode() === 200) {
                 return $response->toArray();
@@ -41,6 +43,19 @@ class CallApiService
             if ($response->getStatusCode() === 200) {
                 return $response->toArray();
             }
+    }
+
+    public function callApiDetailsSeries(Request $resquest): array
+    {
+        $id = $resquest->get('id');
+        $response = $this->client->request(
+            'GET',
+            'https://api.themoviedb.org/3/tv/' . $id . '?api_key='.$this->apiKey.'&language=en-US');
+        
+            if ($response->getStatusCode() === 200) {
+                return $response->toArray();
+            }
+            return [];
     }
 
     public function callApiLatestMovies(): array
