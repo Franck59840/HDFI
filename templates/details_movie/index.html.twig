@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }} - Details
+{% endblock %}
+
+{% block body %}
+    {# <div class="flex justify-center">
+        <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+        <img class=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="" />
+        <div class="p-6 flex flex-col justify-start">
+        <h5 class="text-gray-900 text-xl font-medium mb-2">{{detailsDataMovies.title}}</h5>
+        <p class="text-gray-700 text-base mb-4">
+            {{detailsDataMovies.overview}}
+        </p>
+        <p class="text-gray-600 text-xs">{{}}</p>
+    </div>
+  </div>
+</div> #}
+<div class="flex items-center w-screen min-h-screen" style="font-family: 'Montserrat', sans-serif;">
+      <div class="container h-full flex justify-center">
+        <div class="w-full  ml-auto mr-auto">
+          <div class="flex flex-wrap">
+            <div class="w-full sm:w-3/12 bg-grey p-5 sm:pb-20">
+              <h1 class="font-bold text-lg">{{detailsDataMovies.title}}</h1>
+              <div class="w-10 h-1 bg-red-600"></div>
+              <ul class="space-y-2 mt-2 sm:mb-8">
+                <li>
+                  <span class="text-xs text-gray-700">Production</span>
+                  <strong class="block text-sm text-gray-700"></strong>
+                </li>
+                <li>
+                  <span class="text-xs text-gray-700">Release Date</span>
+                  <strong class="block text-sm text-gray-700"
+                    >{{detailsDataMovies.release_date}}</strong
+                  >
+                </li>
+                <li>
+                  <span class="text-xs text-gray-700">Budget</span>
+                  <strong class="block text-sm text-gray-700"
+                    >{{detailsDataMovies.revenue}}</strong
+                  >
+                </li>
+                <li>
+                  
+                  <a href={{detailsDataMovies.homepage}} target="_blank" class="block text-sm text-gray-700"
+                    >Official site</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="w-full sm:w-9/12 h-64 sm:h-auto bg-indigo-900 bg-cover relative flex items-center justify-center" style="background-image: url('https://image.tmdb.org/t/p/original{{ detailsDataMovies.poster_path }}')">
+              
+              <div class="opacity-75 bg-black w-full h-full left-0 top-0 absolute"></div>
+            </div>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="w-full sm:w-3/12 bg-slate-300 flex">
+              <figure class="mt-5 mb-4 ml-auto mr-auto sm:-mt-16 sm:mr-0 sm:ml-8 sm:mb-0 w-full relative">
+                <div
+                  class="absolute w-10 h-12 -mt-3 -ml-3 bg-black z-0 hidden sm:block"
+                ></div>
+                <img
+                  src=https://image.tmdb.org/t/p/original{{ detailsDataMovies.poster_path }}
+                  alt="movie poster"
+                  class="relative z-10 w-1/2 h-auto block ml-auto mr-auto sm:ml-0 sm:mr-0 sm:w-full sm:h-64 object-cover"
+                />
+              </figure>
+            </div>
+            <div class="w-full sm:w-9/12 bg-gray-00 flex">
+              <div
+                class="bg-white sm:-mt-16 sm:mr-8 w-full h-64 relative rounded-tr-lg"
+              >
+                <ul class="flex flex-wrap pl-2 pr-2 mb-2 sm:pt-5 sm:pb-5 sm:pl-8 sm:pr-8 sm:space-x-6 text-sm font-light">
+                  <li
+                    class="cursor-pointer font-semibold border-b-2 border-red-600 leading-loose pr-3"
+                  >
+                    Overview
+                  </li>
+            
+                </ul>
+                <div class="flex flex-wrap sm:divide-x divide-gray-400 pl-2 pr-2 sm:pl-8 sm:pr-8">
+                  <p>
+                    {{detailsDataMovies.overview}}
+                    </p>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+		
+{% endblock %}
