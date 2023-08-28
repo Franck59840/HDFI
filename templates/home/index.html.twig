@@ -6,7 +6,7 @@
 
 {% block body %}
 
-{# Carousel #}
+{# Carousel1 #}
 <div id="carouselExampleCaptions" class="carousel slide relative" data-bs-ride="carousel">
   {% set randomIndex = random(0, data.results|length - 1) %}
   	{% for latest in data.results|slice(randomIndex, 1) %}
